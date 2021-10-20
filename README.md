@@ -12,16 +12,19 @@ To get started:
 2. In a terminal, use `cd` to get into the folder for the repository
 3. Ensure that you have an environment created and activated
 4. Install the necessary packages:
-   * `google-cloud-storage` -- the Google Cloud Storage client package for Python
    * `requests`
    * `sqlalchemy`
    * `pandas`
-   * `psycopg2-binary` -- For Conda, psycopg2-binary is available via the `conda-forge` channel, so make sure you have the it added as a package source (in a terminal, run: `conda config --add channels conda-forge`). You can see what channel owns a particular package using [the search at anaconda.org](https://anaconda.org/search?q=psycopg2-binary).
+   * `psycopg2-binary` -- **for Conda**, psycopg2-binary is available via the `conda-forge` channel, so make sure you have the it added as a package source (in a terminal, run: `conda config --add channels conda-forge`). You can see what channel owns a particular package using [the search at anaconda.org](https://anaconda.org/search?q=psycopg2-binary).
+   * `google-cloud-storage` -- the Google Cloud Storage client package for Python
+   * `google-cloud-bigquery-storage` -- the
+   * `sqlalchemy-bigquery` -- provides a BigQuery "dialect" for SQLAlchemy. **For Conda**, there is currently no channel that provides `sqlalchemy-bigquery`, so you will see below that you have to install it with `pip`.
 
 ```bash
 conda create -n lab05
 conda activate lab05
-conda install requests google-cloud-storage sqlalchemy pandas psycopg2-binary
+conda install requests google-cloud-storage google-cloud-bigquery-storage sqlalchemy pandas psycopg2-binary
+pip install sqlalchemy-bigquery
 ```
 
 **OR**
@@ -29,7 +32,7 @@ conda install requests google-cloud-storage sqlalchemy pandas psycopg2-binary
 ```bash
 poetry init
 poetry shell
-poetry add requests google-cloud-storage sqlalchemy pandas psycopg2-binary
+poetry add requests google-cloud-storage google-cloud-bigquery-storage sqlalchemy pandas psycopg2-binary sqlalchemy-bigquery
 ```
 
 From there, follow Google's [documentation](https://cloud.google.com/storage/docs/reference/libraries#client-libraries-install-python) for setting up a service account, and generating keys. When you get to the point of setting `GOOGLE_APPLICATION_CREDENTIALS`, see the section below on _Environment Variables_.
@@ -78,6 +81,8 @@ conda env config vars set GOOGLE_APPLICATION_CREDENTIALS=...
 ```
 
 (replace the ellipses with your path).
+
+## Using `sqlalchemy-bigquery`
 
 ## Stretch goals
 
