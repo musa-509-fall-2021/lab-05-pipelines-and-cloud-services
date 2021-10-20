@@ -48,7 +48,7 @@ For poetry, we'll need an additional tool to allow us to set environment variabl
 Install the package into your environment by running the following in a terminal:
 
 ```bash
-poetry install python-dotenv
+poetry add python-dotenv
 ```
 
 **OR (optional)**
