@@ -8,7 +8,15 @@ CONVERT THIS SCRIPT TO USE GOOGLE CLOUD STORAGE TO RETRIEVE THE INPUTS AND SAVE
 THE OUTPUTS INTO GOOGLE BIGQUERY.
 
 This process should download the files from steps 1 and 2 from Google Cloud
-Storage to local files
+Storage to local files, and then upload the data into tables on Google BigQuery.
+Since we've installed the sqlalchemy-bigquery package, we can simply rely on
+sqlalchemy to talk to BigQuery. The call to `create_engine` will need to be
+updated to use a BigQuery data set connection string of the form:
+
+    bigquery://GOOGLE_PROJECT_ID/BIGQUERY_DATASET_NAME
+
+sqlalchemy-bigquery knows to use your GOOGLE_APPLICATION_CREDENTIALS environment
+variable to connect to Google Cloud Platform.
 """
 
 import datetime as dt

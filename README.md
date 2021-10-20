@@ -109,4 +109,12 @@ conda env config vars set GOOGLE_APPLICATION_CREDENTIALS=...
       gcs_blob_name: str):
       ...
   ```
+
+* It is considered bad practice to "hard-code" values like connection strings into a script that is meant to be run in the cloud. A better practice is to store values needed for connecting to your system's internal cloud services in environment variables. We are already using an environment variable for the name of the GCS bucket. For the load task, create two additional environment variables:
+
+  * `PIPELINE_PROJECT` -- Will be set to the ID of the GCP project
+  * `PIPELINE_DATASET` -- Will be set to the ID of the BigQuery dataset
+
+  Get the values of these two environment variables from within the load script, and use the values in an f-string create your SQLAlchemy engine.
+
 * What if the expected files aren't available in GCS? Write a [`try`/`except` block](https://realpython.com/python-exceptions/) that can handle this case.
