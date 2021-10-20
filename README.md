@@ -82,8 +82,6 @@ conda env config vars set GOOGLE_APPLICATION_CREDENTIALS=...
 
 (replace the ellipses with your path).
 
-## Using `sqlalchemy-bigquery`
-
 ## Stretch goals
 
 * Notice that in each of the extract scripts we are performing the following steps:
