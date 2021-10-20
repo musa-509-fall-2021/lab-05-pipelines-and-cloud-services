@@ -86,7 +86,7 @@ conda env config vars set GOOGLE_APPLICATION_CREDENTIALS=...
   2. saving the response content to a file, and
   3. uploading that file content to Google Cloud Storage
 
-  In this case, we can write a function to encapsulate this logic. Update the extract scripts to use a function named `http_to_gcs`. You can put the function in a new module named `pipeline_tools` in the same folder as your scripts, and then in the import blocks of the extract scripts, add the line:
+  In this case, we can write a function to encapsulate the above logic. Create a function named `http_to_gcs`, and update the extract scripts to use that function. You can put the function in a new module named _pipeline_tools.py_ in the same folder as your scripts, and then in the import blocks of the extract scripts, add the line:
 
   ```python
   from pipeline_tools import http_to_gcs
