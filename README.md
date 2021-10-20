@@ -82,6 +82,15 @@ conda env config vars set GOOGLE_APPLICATION_CREDENTIALS=...
 
 (replace the ellipses with your path).
 
+## Useful docs for the Google Cloud console
+
+You are going to need to create a bucket in Google Cloud Storage, and a dataset in BigQuery for this lab. The following are Google's documentation for doing so through the Google Cloud Platform "console" (i.e., the web UI):
+
+* [Creating a Cloud Storage bucket](https://cloud.google.com/storage/docs/quickstart-console#create_a_bucket)
+  - I walked through this process in the October 18 lecture ([recording in Slack](https://musa509610.slack.com/archives/C02CN2ZQG23/p1634602882004700))
+* [Creating a BigQuery data set](https://cloud.google.com/bigquery/docs/quickstarts/quickstart-cloud-console#create_a_dataset)
+  - I walked through this process in the September 27 lecture ([lecture/slides in Slack](https://musa509610.slack.com/archives/C02CN2ZQG23/p1632769863001400))
+
 ## Stretch goals
 
 * Notice that in each of the extract scripts we are performing the following steps:
