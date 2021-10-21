@@ -131,6 +131,8 @@ You are going to need to create a bucket in Google Cloud Storage, and a dataset 
       ...
   ```
 
+  I have recorded an example of getting rid of repetitive code by creating a function to [a YouTube video (27 min)](https://youtu.be/dA63UTOr9gA). I wrote a script to read for that video basically verbatim which I posted [here](https://gist.github.com/mjumbewu/e95a6b4a49ef3ba1e0c6320ffc18ccb9).
+
 * It is considered bad practice to "hard-code" values like connection strings into a script that is meant to be run in the cloud. A better practice is to store values needed for connecting to your system's internal cloud services in environment variables. We are already using an environment variable for the name of the GCS bucket. For the load task, create two additional environment variables:
 
   * `PIPELINE_PROJECT` -- Will be set to the ID of the GCP project
