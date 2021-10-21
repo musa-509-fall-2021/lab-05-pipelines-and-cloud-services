@@ -39,13 +39,29 @@ From there, follow Google's [documentation](https://cloud.google.com/storage/doc
 
 ## Environment Variables
 
+When we have to use things like passwords or file paths in our scripts, we could code those values directly into our scripts, but it is better to use environment variables. Using environment variables can make our script code more secure and more portable.
+
+Regarding **security**, it is often useful to be able to share code, however if store things like passwords and keys directly in the code, then any time we want share our code we will have to modify it to remove those "sensitive" values.
+
+Regarding **portability**, I will often write and test a script on my own computer, so any file paths or other machine-specific information that I use in my script will be specific to my computer. This means that when I want to share my code with someone else, or deploy it to the cloud, I will have to use a modified version of my code than the one on my machine.
+
+For both of these reasons, it is often preferable to separate the functionality of the script from the machine-specific settings used in the script by using environment variables.
+
 Conda has a neat feature where you can [use it to set environment variables](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#setting-environment-variables). This is nice for when you have to switch between different environments. However, you want to be careful if you export your environment to a yml file.
 
-For poetry, we'll need an additional tool to allow us to set environment variables within our environment. There are several tools that make this possible, but a reliable one that will work across platforms is [python-dotenv](https://github.com/theskumar/python-dotenv). You _can_ use `dotenv` with Conda as well.
+For poetry, we'll need an additional tool to allow us to set environment variables within our environment. There are several tools that make this possible, but a reliable one that will work across platforms is [python-dotenv](https://github.com/theskumar/python-dotenv). You _can_ use `dotenv` with Conda as well. Instructions for using `dotenv` or for using Conda's environment management are below.
 
 ### Using `dotenv` to manage environment variables
 
-Install the package into your environment by running the following in a terminal:
+The `dotenv` package allows you to define project-specific environment variables in a file named _.env_. Now, instead of running `export GOOGLE_APPLICATION_CREDENTIALS=...`, create a file named _.env_ within your project folder (there is no special tool that you need to create a ".env" file -- it should just be a normal text file that you can create with any code editor), add a line `GOOGLE_APPLICATION_CREDENTIALS=...` replacing the ellipses (`...`) with the path to your credentials key file.
+
+For example, the contents of my _.env_ file are below. In that file I've defined two variables: `GOOGLE_APPLICATION_CREDENTIALS` and `PIPELINE_DATA_BUCKET`. Whatever comes after the equals sign (`=`) is the value of that environment variable.
+```
+GOOGLE_APPLICATION_CREDENTIALS=/home/mjumbewu/.google-cloud/musa-509-2021-82382711a91a.json
+PIPELINE_DATA_BUCKET=mjumbewu_cloudservices
+```
+
+To use your _.env_ file, you'll need the `dotenv` package. Install the package into your environment by running the following in a terminal:
 
 ```bash
 poetry add python-dotenv
@@ -56,8 +72,6 @@ poetry add python-dotenv
 ```bash
 conda install python-dotenv
 ```
-
-The `dotenv` package allows you to define project-specific environment variables in a file named _.env_. Now, instead of running `export GOOGLE_APPLICATION_CREDENTIALS=...`, create a file named _.env_ within your project folder, add a line `GOOGLE_APPLICATION_CREDENTIALS=...` replacing the ellipses (`...`) with the path to your credentials key file.
 
 To use `dotenv`, at the top of your scripts, add the following:
 
@@ -80,7 +94,7 @@ For example, once you have the path to your Google application credentials, you 
 conda env config vars set GOOGLE_APPLICATION_CREDENTIALS=...
 ```
 
-(replace the ellipses with your path).
+(replace the ellipses with your path). Whatever comes after the equals sign (`=`) is the value of that environment variable.
 
 ## Useful docs for the Google Cloud console
 
